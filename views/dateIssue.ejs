@@ -1,0 +1,69 @@
+<!-- views/dateIssue.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Issue</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Date Issue</h1>
+    
+    <!-- Date Issue Form -->
+    <form action="/date-issue" method="post">
+      <div class="form-group">
+        <label for="bookId">Select Book ID:</label>
+        <select class="form-control" id="bookId" name="bookId" required>
+          <!-- Populate the dropdown with existing book IDs -->
+          <% books.forEach(book => { %>
+            <option value="<%= book.id %>"><%= book.id %></option>
+          <% }); %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="customerId">Customer ID:</label>
+        <input type="text" class="form-control" id="customerId" name="customerId" required>
+      </div>
+      <div class="form-group">
+        <label for="issueDate">Issue Date:</label>
+        <input type="date" class="form-control" id="issueDate" name="issueDate" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+<!-- Main.js script directly embedded -->
+<script>
+  $(document).ready(function () {
+    // Event handler for book ID dropdown change
+    $('#bookId').change(function () {
+      // Get the selected book ID
+      const selectedBookId = $(this).val();
+
+      // Make an AJAX request to fetch book details based on the selected ID
+      $.ajax({
+        url: `/get-book-details/${selectedBookId}`, 
+        method: 'GET',
+        success: function (bookDetails) {
+          // Populate the form fields with the fetched book details
+          $('#newTitle').val(bookDetails.title);
+          $('#newAvailability').val(bookDetails.available.toString()); // Assuming 'available' is a boolean
+        },
+        error: function (error) {
+          console.error('Error fetching book details:', error);
+        }
+      });
+    });
+  });
+</script>
+
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

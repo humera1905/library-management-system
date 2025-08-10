@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Issue / Return</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Ultimate UI CSS (Replace with the actual Ultimate UI CSS link) -->
+  <link href="path/to/ultimate-ui.css" rel="stylesheet">
+
+  <!-- Main.js -->
+  <script src="/js/main.js"></script>
+</head>
+<body class="bg-light">
+  <div class="container mt-4">
+    <h1 class="mb-4">Date Issue / Return</h1>
+
+    <!-- Bootstrap Card for the form -->
+    <div class="card">
+      <div class="card-body">
+
+        <form action="/issue-return" method="post">
+          <!-- Bootstrap Form Group for each field -->
+          <div class="form-group">
+            <label for="bookId">Book ID:</label>
+            <input type="text" class="form-control" id="bookId" name="bookId" required>
+          </div>
+
+          <div class="form-group">
+            <label for="customerId">Customer ID:</label>
+            <input type="text" class="form-control" id="customerId" name="customerId" required>
+          </div>
+
+          <div class="form-group">
+            <label for="issueDate">Issue Date:</label>
+            <input type="date" class="form-control" id="issueDate" name="issueDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="returnDate">Return Date:</label>
+            <input type="date" class="form-control" id="returnDate" name="returnDate" required>
+          </div>
+
+          <!-- Bootstrap Button for submission -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Ultimate UI JS (Replace with the actual Ultimate UI JS link) -->
+    <script src="path/to/ultimate-ui.js"></script>
+  </div>
+</body>
+</html>
